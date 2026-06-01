@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:www.redoyanulhaque.me)",
+      "Bash(curl -sL \"https://www.redoyanulhaque.me/\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL \"https://www.redoyanulhaque.me/assets/index-Dy5XKj18.css\" -A \"Mozilla/5.0\" -o /tmp/redoyanul.css)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL \"https://www.redoyanulhaque.me/assets/index-Dy5XKj18.css\" -A \"Mozilla/5.0\" -o \"C:/Users/galve/AppData/Local/Temp/redoyanul.css\")",
+      "Read(//c/Users/galve/AppData/Local/Temp/**)"
+    ]
+  }
+}

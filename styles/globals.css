@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-geist-sans), system-ui, sans-serif;
+  --color-bg-primary: #f5f2f7;
+  --color-bg-secondary: #eae5ec;
+  --color-bg-card: #ffffff;
+  --color-accent-primary: #4cd18c;
+  --color-accent-light: #a5ff7c;
+  --color-accent-muted: #b9ffa4;
+  --color-text-primary: #0b080c;
+  --color-text-secondary: #4a464f;
+  --color-text-muted: #8b8590;
+  --color-border: rgba(11, 8, 12, 0.08);
+  --color-border-hover: rgba(92, 255, 171, 0.6);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  background: var(--color-bg-primary);
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), 'Geist', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent-primary);
+  color: #0b080c;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* Utility classes */
+@layer components {
+  .container-fluid {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16;
+  }
+
+  .accent-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-accent-primary) 50%,
+      transparent 100%
+    );
+  }
+
+  .accent-line-solid {
+    height: 1px;
+    background: var(--color-ink-primary, #0b080c);
+    opacity: 0.18;
+  }
+
+  .text-display {
+    font-family: var(--font-display), 'Geist', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .text-accent-gradient {
+    background: linear-gradient(135deg, #a5ff7c 0%, #5cffab 60%, #2ddf8a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 border border-accent px-6 py-3 text-sm uppercase tracking-[0.2em] text-ink-primary transition-all duration-200 hover:bg-accent;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-ink-muted/40 px-6 py-3 text-sm uppercase tracking-[0.2em] text-ink-primary transition-all duration-200 hover:border-ink-primary hover:bg-ink-primary hover:text-bg-card;
+  }
+
+  .card-elevated {
+    @apply relative border border-[color:var(--color-border)] bg-bg-card transition-all duration-300;
+  }
+
+  .card-elevated:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: 0 30px 60px -30px rgba(11, 8, 12, 0.12), 0 0 0 1px rgba(92, 255, 171, 0.15);
+  }
+}
+
+/* Reveal helpers — invisible by default until GSAP plays */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-instant {
+  opacity: 0;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
