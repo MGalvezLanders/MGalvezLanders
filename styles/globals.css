@@ -1,6 +1,8 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
 
 :root {
   --font-body: var(--font-geist-sans), system-ui, sans-serif;
@@ -47,7 +49,7 @@ html {
 body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
-  font-family: var(--font-body), 'Geist', system-ui, sans-serif;
+  font-family: var(--font-body), "Geist", system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -75,7 +77,26 @@ body {
 /* Utility classes */
 @layer components {
   .container-fluid {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 80rem; /* approximate Tailwind max-w-7xl (1280px) */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+  }
+
+  @media (min-width: 768px) {
+    .container-fluid {
+      padding-left: 2.5rem; /* md:px-10 */
+      padding-right: 2.5rem; /* md:px-10 */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-fluid {
+      padding-left: 4rem; /* lg:px-16 */
+      padding-right: 4rem; /* lg:px-16 */
+    }
   }
 
   .accent-line {
@@ -95,7 +116,7 @@ body {
   }
 
   .text-display {
-    font-family: var(--font-display), 'Geist', system-ui, sans-serif;
+    font-family: var(--font-display), "Geist", system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
@@ -108,21 +129,60 @@ body {
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 border border-accent px-6 py-3 text-sm uppercase tracking-[0.2em] text-ink-primary transition-all duration-200 hover:bg-accent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-accent-primary);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-ink-primary, var(--color-text-primary));
+    background: transparent;
+    transition: all 200ms;
   }
 
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 border border-ink-muted/40 px-6 py-3 text-sm uppercase tracking-[0.2em] text-ink-primary transition-all duration-200 hover:border-ink-primary hover:bg-ink-primary hover:text-bg-card;
+  .btn-accent:hover {
+    background: var(--color-accent-primary);
   }
+}
 
-  .card-elevated {
-    @apply relative border border-[color:var(--color-border)] bg-bg-card transition-all duration-300;
-  }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(139, 133, 144, 0.4);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  background: transparent;
+  transition: all 200ms;
+}
 
-  .card-elevated:hover {
-    border-color: var(--color-border-hover);
-    box-shadow: 0 30px 60px -30px rgba(11, 8, 12, 0.12), 0 0 0 1px rgba(92, 255, 171, 0.15);
-  }
+.btn-ghost:hover {
+  border-color: var(--color-text-primary);
+  background: var(--color-text-primary);
+  color: var(--color-bg-card);
+}
+
+.card-elevated {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  transition: all 300ms;
+}
+
+.card-elevated:hover {
+  border-color: var(--color-border-hover);
+  box-shadow:
+    0 30px 60px -30px rgba(11, 8, 12, 0.12),
+    0 0 0 1px rgba(92, 255, 171, 0.15);
 }
 
 /* Reveal helpers — invisible by default until GSAP plays */
