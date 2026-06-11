@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Mail, Linkedin, Github, MapPin, Send, Loader2 } from 'lucide-react'
+import { Mail, Linkedin, Github, MapPin, Phone, Send, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { gsap } from '@/lib/gsap'
 import SectionTitle from '@/components/ui/SectionTitle'
@@ -60,7 +60,7 @@ export default function Contact() {
 
     setStatus('loading')
     const t = toast.loading('Enviando mensaje…', {
-      style: { background: '#FFFFFF', color: '#0B080C', border: '1px solid rgba(92,255,171,0.5)' },
+      style: { background: '#FFFFFF', color: '#0B1220', border: '1px solid rgba(37,99,235,0.5)' },
     })
 
     try {
@@ -77,8 +77,8 @@ export default function Contact() {
 
       toast.success('¡Mensaje enviado! Te respondo pronto.', {
         id: t,
-        style: { background: '#FFFFFF', color: '#0B080C', border: '1px solid rgba(45,223,138,0.7)' },
-        iconTheme: { primary: '#2DDF8A', secondary: '#FFFFFF' },
+        style: { background: '#FFFFFF', color: '#0B1220', border: '1px solid rgba(37,99,235,0.7)' },
+        iconTheme: { primary: '#2563EB', secondary: '#FFFFFF' },
       })
       setStatus('success')
       setForm({ name: '', email: '', subject: 'Freelance', message: '' })
@@ -86,7 +86,7 @@ export default function Contact() {
       const msg = err instanceof Error ? err.message : 'Error al enviar.'
       toast.error(msg, {
         id: t,
-        style: { background: '#FFFFFF', color: '#0B080C', border: '1px solid #d63b34' },
+        style: { background: '#FFFFFF', color: '#0B1220', border: '1px solid #d63b34' },
       })
       setStatus('error')
     }
@@ -103,7 +103,7 @@ export default function Contact() {
     >
       <div className="container-fluid">
         <SectionTitle
-          eyebrow="04 / Contacto"
+          eyebrow="06 / Contacto"
           title="Trabajemos juntos"
           subtitle="Estoy disponible para proyectos freelance y posiciones full-time."
         />
@@ -115,6 +115,12 @@ export default function Contact() {
               label="Email"
               value={contact.email}
               href={`mailto:${contact.email}`}
+            />
+            <ContactRow
+              icon={<Phone size={18} />}
+              label="Teléfono"
+              value={contact.phone}
+              href={contact.phoneHref}
             />
             <ContactRow
               icon={<Linkedin size={18} />}

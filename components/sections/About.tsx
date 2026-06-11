@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { MapPin, CheckCircle2, Globe } from 'lucide-react'
+import { MapPin, CheckCircle2, Globe, ExternalLink } from 'lucide-react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import SectionTitle from '@/components/ui/SectionTitle'
-import { stats } from '@/lib/data'
+import { stats, contact } from '@/lib/data'
 
 export default function About() {
   const rootRef = useRef<HTMLElement | null>(null)
@@ -109,8 +109,15 @@ export default function About() {
               data-about-paragraph
               className="text-lg leading-relaxed text-ink-secondary md:text-xl"
             >
-              <span className="text-accent-light">Inglés C2 certificado</span> (EF SET).
-              Disponible para trabajo remoto y proyectos freelance.
+              <a
+                href={contact.efSetUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-accent-light underline decoration-accent/40 underline-offset-4 transition-colors duration-300 hover:text-accent hover:decoration-accent"
+              >
+                Inglés C2 certificado (EF SET) <ExternalLink size={14} />
+              </a>
+              . Disponible para trabajo remoto y proyectos freelance.
             </p>
 
             <div data-about-badges className="mt-6 flex flex-wrap gap-3">

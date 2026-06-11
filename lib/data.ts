@@ -1,80 +1,36 @@
-export type SkillLevel = 'Básico' | 'Básico-Intermedio' | 'Intermedio' | 'Intermedio-Avanzado' | 'Avanzado'
-
-export type Skill = {
-  name: string
-  level: SkillLevel
-  percent: number
-}
-
 export type SkillCategory = {
   title: string
-  skills: Skill[]
+  skills: string[]
 }
-
-const levelToPercent = (level: SkillLevel): number => {
-  switch (level) {
-    case 'Básico':
-      return 35
-    case 'Básico-Intermedio':
-      return 50
-    case 'Intermedio':
-      return 65
-    case 'Intermedio-Avanzado':
-      return 78
-    case 'Avanzado':
-      return 90
-  }
-}
-
-const s = (name: string, level: SkillLevel): Skill => ({
-  name,
-  level,
-  percent: levelToPercent(level),
-})
 
 export const skillCategories: SkillCategory[] = [
   {
     title: 'Frontend',
     skills: [
-      s('JavaScript (ES6+)', 'Avanzado'),
-      s('TypeScript', 'Avanzado'),
-      s('React 18', 'Avanzado'),
-      s('HTML5 / CSS3', 'Avanzado'),
-      s('TailwindCSS', 'Avanzado'),
-      s('Vite', 'Intermedio'),
+      'JavaScript (ES6+)',
+      'TypeScript',
+      'React 18',
+      'HTML5',
+      'CSS3',
+      'TailwindCSS',
+      'Vite',
     ],
   },
   {
     title: 'Backend',
-    skills: [
-      s('Node.js', 'Intermedio-Avanzado'),
-      s('Express.js', 'Intermedio-Avanzado'),
-      s('PHP', 'Básico-Intermedio'),
-      s('REST APIs', 'Avanzado'),
-    ],
+    skills: ['Node.js', 'Express', 'REST APIs', 'PHP'],
   },
   {
-    title: 'Base de datos',
-    skills: [
-      s('PostgreSQL', 'Intermedio'),
-      s('Firebase / Firestore', 'Intermedio'),
-    ],
+    title: 'Bases de datos',
+    skills: ['PostgreSQL', 'Firebase (Firestore)'],
   },
   {
     title: 'Cloud & DevOps',
-    skills: [
-      s('AWS S3', 'Básico-Intermedio'),
-      s('Vercel', 'Avanzado'),
-      s('Git / GitHub', 'Avanzado'),
-    ],
+    skills: ['AWS S3', 'Vercel', 'Git', 'GitHub', 'CI/CD'],
   },
   {
-    title: 'Herramientas',
-    skills: [
-      s('VS Code', 'Avanzado'),
-      s('React Testing Library', 'Intermedio'),
-      s('Vitest', 'Intermedio'),
-    ],
+    title: 'Testing',
+    skills: ['Vitest', 'React Testing Library'],
   },
 ]
 
@@ -88,9 +44,32 @@ export type Project = {
   badge?: string
   badgeNote?: string
   featured?: boolean
+  comingSoon?: boolean
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'latampay',
+    title: 'LatamPay — Billetera Digital Multi-moneda',
+    description:
+      'Proyecto Final Full Stack de Henry. Billetera digital multi-moneda (ARS, COP, VES) con compra, venta e intercambio de divisas aplicando tasas reales vía ExchangeRate-API con caching. Backend Express + TypeScript con PostgreSQL en Railway, autenticación JWT y transacciones atómicas append-only siguiendo principios SOLID. Emails de confirmación automáticos por transacción con AWS SES sobre Vercel Functions, chatbot asistente con Gemini (gemini-2.5-flash) con mitigación de prompt injection y suite de tests con Vitest sobre lógica crítica.',
+    stack: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Express',
+      'PostgreSQL',
+      'Railway',
+      'Vercel',
+      'JWT',
+      'AWS SES',
+      'Gemini API',
+      'Vitest',
+    ],
+    liveUrl: 'https://latam-pay-frontend.vercel.app/',
+    badge: 'Proyecto Final',
+    featured: true,
+  },
   {
     slug: 'la-gauchada',
     title: 'La Gauchada Mates',
@@ -111,8 +90,6 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://proyecto-m5-maximo-galvez-landers.vercel.app/',
     githubUrl: 'https://github.com/MGalvezLanders',
-    badge: 'Proyecto más complejo',
-    featured: true,
   },
   {
     slug: 'listarg',
@@ -130,30 +107,91 @@ export const projects: Project[] = [
     stack: ['JavaScript', 'CSS', 'HTML'],
     liveUrl: 'https://proyecto-m3-maximo-galvez-landers-c.vercel.app/',
   },
-  {
-    slug: 'paleta-colores',
-    title: 'Paleta de Colores',
-    description:
-      'Herramienta interactiva para explorar y generar paletas de colores. Primer proyecto — el punto de partida del camino.',
-    stack: ['JavaScript Vanilla', 'HTML', 'CSS'],
-    liveUrl: 'https://mgalvezlanders.github.io/ProyectoM1_MaximoGalvezLanders/',
-    badge: 'Primer proyecto',
-    badgeNote: 'En 5 meses, de acá a La Gauchada.',
-  },
 ]
 
 export const stats = [
-  { value: '5', suffix: ' meses', label: 'de desarrollo intensivo' },
+  { value: '800', suffix: '+ hs', label: 'de formación intensiva en Henry' },
   { value: '5', suffix: '+', label: 'proyectos en producción' },
   { value: 'C2', suffix: '', label: 'Inglés certificado (EF SET)' },
   { value: '13', suffix: ' años', label: 'de rugby competitivo' },
 ]
 
+export type Education = {
+  title: string
+  institution: string
+  period: string
+  description: string
+  status?: string
+}
+
+export const education: Education[] = [
+  {
+    title: 'Desarrollador Full Stack — Bootcamp Full Time',
+    institution: 'Henry',
+    period: 'Feb 2026 – Jun 2026',
+    status: 'En curso',
+    description:
+      'Programa intensivo de +800 horas. Desarrollo de aplicaciones web con JavaScript, TypeScript, React, Node.js, Express y PostgreSQL. Metodologías ágiles y trabajo en equipo.',
+  },
+  {
+    title: 'Programador Universitario',
+    institution: 'Universidad Nacional de Tucumán',
+    period: '2024',
+    description:
+      'Fundamentos de programación, estructuras de datos, bases de datos relacionales y desarrollo de software.',
+  },
+]
+
+export type Certification = {
+  name: string
+  issuer: string
+  detail: string
+  url?: string
+}
+
+export const certifications: Certification[] = [
+  {
+    name: 'EF SET — Inglés C2 Proficiente',
+    issuer: 'EF Standard English Test',
+    detail: '71/100 — Nivel C2 (Proficiente)',
+    url: 'https://cert.efset.org/es/y19puv',
+  },
+]
+
+export type RugbyMilestone = {
+  year: string
+  title: string
+  description: string
+}
+
+export const rugby = {
+  yearsCompetitive: 13,
+  currentTeam: 'Tucumán Rugby Club',
+  currentDivision: 'Primera División',
+  milestones: [
+    {
+      year: '2022 – 2023',
+      title: 'PLADAR — Plan de Alto Rendimiento',
+      description:
+        'Seleccionado para el programa de elite nacional de la Unión Argentina de Rugby (UAR).',
+    },
+    {
+      year: 'Actualidad',
+      title: 'Primera División — Tucumán Rugby Club',
+      description:
+        'Compitiendo al máximo nivel del rugby tucumano mientras avanzo en mi carrera como desarrollador.',
+    },
+  ] as RugbyMilestone[],
+}
+
 export const contact = {
   email: 'galvezlandersmaximo@gmail.com',
+  phone: '+54 381 587-1791',
+  phoneHref: 'tel:+543815871791',
   linkedin: 'https://linkedin.com/in/maximo-galvez-landers-2487352b8',
   github: 'https://github.com/MGalvezLanders',
   location: 'Tucumán, Argentina (disponible remoto)',
+  efSetUrl: 'https://cert.efset.org/es/y19puv',
 }
 
 export const navLinks = [
@@ -161,5 +199,7 @@ export const navLinks = [
   { href: '#sobre-mi', label: 'Sobre mí' },
   { href: '#skills', label: 'Skills' },
   { href: '#proyectos', label: 'Proyectos' },
+  { href: '#educacion', label: 'Educación' },
+  { href: '#rugby', label: 'Rugby' },
   { href: '#contacto', label: 'Contacto' },
 ]

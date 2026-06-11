@@ -10,20 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          primary: '#F5F2F7',   // warm off-white with subtle violet tint
-          secondary: '#EAE5EC', // Redoyanul's cream
-          card: '#FFFFFF',      // pure white for cards to pop
+          primary: '#FFFFFF',   // pure white
+          secondary: '#F4F7FB', // very light blue-gray
+          card: '#FFFFFF',      // white cards
         },
         accent: {
-          DEFAULT: '#5CFFAB',  // mint green, primary
-          primary: '#5CFFAB',
-          light: '#A5FF7C',    // lime (hover, secondary)
-          muted: '#B9FFA4',    // soft lime (decorative)
+          DEFAULT: '#2563EB',  // blue-600
+          primary: '#2563EB',
+          light: '#60A5FA',    // blue-400 (hover, secondary)
+          muted: '#93C5FD',    // blue-300 (decorative)
         },
         ink: {
-          primary: '#0B080C',   // deep near-black with violet tint (echo of Redoyanul bg)
-          secondary: '#4A464F', // warm dark gray
-          muted: '#8B8590',     // warm light gray
+          primary: '#0B1220',   // near-black, cool tone
+          secondary: '#475569', // slate-600
+          muted: '#94A3B8',     // slate-400
         },
       },
       fontFamily: {
@@ -39,8 +39,8 @@ const config: Config = {
         'bounce-slow': 'bounce 2.4s infinite',
       },
       backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, #A5FF7C 0%, #5CFFAB 60%, #2DDF8A 100%)',
-        'accent-line': 'linear-gradient(90deg, transparent 0%, #5CFFAB 50%, transparent 100%)',
+        'accent-gradient': 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 60%, #1D4ED8 100%)',
+        'accent-line': 'linear-gradient(90deg, transparent 0%, #3B82F6 50%, transparent 100%)',
       },
     },
   },

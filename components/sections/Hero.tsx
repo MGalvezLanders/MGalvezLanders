@@ -89,7 +89,7 @@ export default function Hero() {
     el.textContent = ''
     const cursor = document.createElement('span')
     cursor.textContent = '▍'
-    cursor.style.color = '#2DDF8A'
+    cursor.style.color = '#2563eb'
     cursor.style.marginLeft = '4px'
     cursor.style.animation = 'blink 1s steps(1) infinite'
     el.appendChild(cursor)
@@ -149,7 +149,7 @@ export default function Hero() {
         if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(45, 223, 138, ${p.o * 0.5})`
+        ctx.fillStyle = `rgba(37, 99, 235, ${p.o * 0.45})`
         ctx.fill()
       })
       raf = requestAnimationFrame(draw)
@@ -209,10 +209,10 @@ export default function Hero() {
       />
       {/* Background radial */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 40%, rgba(92,255,171,0.20) 0%, transparent 60%)',
+            'radial-gradient(ellipse at 50% 40%, rgba(37,99,235,0.10) 0%, transparent 65%)',
         }}
         aria-hidden
       />

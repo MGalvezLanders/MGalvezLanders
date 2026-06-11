@@ -16,12 +16,12 @@ export default function Skills() {
       gsap.utils.toArray<HTMLElement>('[data-skill-category]').forEach((cat) => {
         gsap.fromTo(
           cat.querySelectorAll('[data-skill]'),
-          { y: 24, opacity: 0 },
+          { y: 16, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.5,
-            stagger: 0.06,
+            duration: 0.45,
+            stagger: 0.05,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: cat,
@@ -30,25 +30,6 @@ export default function Skills() {
             },
           }
         )
-
-        cat.querySelectorAll<HTMLElement>('[data-skill-bar]').forEach((bar) => {
-          const target = parseFloat(bar.dataset.percent || '0')
-          gsap.fromTo(
-            bar,
-            { scaleX: 0 },
-            {
-              scaleX: target / 100,
-              duration: 0.8,
-              ease: 'power2.out',
-              transformOrigin: 'left center',
-              scrollTrigger: {
-                trigger: bar,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-              },
-            }
-          )
-        })
       })
     }, root)
 
@@ -65,7 +46,7 @@ export default function Skills() {
         <SectionTitle
           eyebrow="02 / Capacidades"
           title="Stack Tecnológico"
-          subtitle="Herramientas y tecnologías con las que trabajo a diario. Niveles autoevaluados con honestidad."
+          subtitle="Herramientas y tecnologías con las que construyo aplicaciones de punta a punta."
         />
 
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -79,24 +60,14 @@ export default function Skills() {
                 <span className="h-px w-6 bg-accent" aria-hidden />
                 {cat.title}
               </h3>
-              <ul className="flex flex-col gap-5">
+              <ul className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <li key={skill.name} data-skill className="flex flex-col gap-2">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="text-sm font-medium text-ink-primary md:text-base">
-                        {skill.name}
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-secondary">
-                        {skill.level}
-                      </span>
-                    </div>
-                    <div className="relative h-px w-full bg-[color:var(--color-border)]">
-                      <div
-                        data-skill-bar
-                        data-percent={skill.percent}
-                        className="absolute inset-y-0 left-0 w-full origin-left bg-accent-gradient"
-                      />
-                    </div>
+                  <li
+                    key={skill}
+                    data-skill
+                    className="border border-[color:var(--color-border)] bg-bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-secondary transition-colors duration-300 hover:border-accent hover:text-accent-light"
+                  >
+                    {skill}
                   </li>
                 ))}
               </ul>

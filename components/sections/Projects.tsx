@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight, Github } from 'lucide-react'
+import { ArrowUpRight, Github, Rocket, Clock } from 'lucide-react'
 import { gsap } from '@/lib/gsap'
 import SectionTitle from '@/components/ui/SectionTitle'
 import { projects, type Project } from '@/lib/data'
@@ -105,15 +105,22 @@ function FeaturedCard({ project }: { project: Project }) {
           </ul>
 
           <div className="mt-2 flex flex-wrap gap-4">
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-accent"
-            >
-              Ver en vivo
-              <ArrowUpRight size={16} />
-            </a>
+            {project.comingSoon ? (
+              <span className="btn-ghost cursor-default opacity-80">
+                <Clock size={16} />
+                Deploy próximamente
+              </span>
+            ) : (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-accent"
+              >
+                Ver en vivo
+                <ArrowUpRight size={16} />
+              </a>
+            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -128,25 +135,40 @@ function FeaturedCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="relative aspect-[4/3] w-full overflow-hidden border border-[color:var(--color-border)]">
-          <iframe
-            src={project.liveUrl}
-            title={project.title}
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            loading="lazy"
-            style={{ transform: 'scale(0.7)', transformOrigin: 'top left', width: '143%', height: '143%' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-tr from-bg-primary/40 via-transparent to-transparent" />
-          <div
-            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            style={{
-              background:
-                'radial-gradient(circle at 50% 50%, rgba(92,255,171,0.22) 0%, transparent 70%)',
-            }}
-          />
+        <div className="relative aspect-[4/3] w-full overflow-hidden border border-[color:var(--color-border)] transition-colors duration-300 group-hover:border-accent">
+          {project.comingSoon ? (
+            <ComingSoonPreview title={project.title} />
+          ) : (
+            <iframe
+              src={project.liveUrl}
+              title={project.title}
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              loading="lazy"
+              style={{ transform: 'scale(0.7)', transformOrigin: 'top left', width: '143%', height: '143%' }}
+            />
+          )}
         </div>
       </div>
     </article>
+  )
+}
+
+function ComingSoonPreview({ title }: { title: string }) {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-bg-secondary p-8 text-center">
+      <div className="flex h-14 w-14 items-center justify-center border border-accent/40 bg-accent/5 text-accent">
+        <Rocket size={22} />
+      </div>
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+        En despliegue
+      </p>
+      <p className="text-display text-xl leading-tight text-ink-primary md:text-2xl">
+        {title}
+      </p>
+      <p className="max-w-xs text-sm text-ink-secondary">
+        Deploy en Vercel próximamente — el código y la arquitectura ya están listos.
+      </p>
+    </div>
   )
 }
 
@@ -201,15 +223,6 @@ function ProjectCard({ project }: { project: Project }) {
           />
         </a>
       </div>
-
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 0%, rgba(92,255,171,0.15) 0%, transparent 60%)',
-        }}
-        aria-hidden
-      />
     </article>
   )
 }
