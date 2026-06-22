@@ -163,7 +163,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=MGalvezLanders&theme=tokyonight&no-frame=true&row=1&column=7&margin-w=10" alt="Trophies" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=MGalvezLanders&theme=tokyo-night&hide_border=true&area=true&radius=8" alt="Activity Graph" />
 </p>
 
 <br />
