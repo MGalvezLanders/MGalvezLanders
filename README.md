@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://github.com/MGalvezLanders">
     <img
-      src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=800&color=58A6FF&center=true&vCenter=true&width=620&lines=Desarrollador+Full+Stack;React+%C2%B7+TypeScript+%C2%B7+Node.js;Construyo+soluciones+web+escalables;Ingl%C3%A9s+C2+%C2%B7+Disponible+para+remoto"
+      src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=800&color=58A6FF&center=true&vCenter=true&width=620&lines=Desarrollador+Full+Stack;React+%C2%B7+TypeScript+%C2%B7+Node.js;Construyo+soluciones+web+escalables;Ingl%C3%A9s+B1+%C2%B7+Disponible+para+remoto"
       alt="Typing SVG"
     />
   </a>
@@ -22,7 +22,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Tucum%C3%A1n%2C%20Argentina-1f6feb?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Ubicación" />
   <img src="https://img.shields.io/badge/Disponible%20para%20remoto-2ea043?style=for-the-badge&logo=icloud&logoColor=white" alt="Remoto" />
-  <img src="https://img.shields.io/badge/Ingl%C3%A9s%20C2-8957e5?style=for-the-badge&logo=duolingo&logoColor=white" alt="Inglés C2" />
+  <img src="https://img.shields.io/badge/Ingl%C3%A9s%20B1-8957e5?style=for-the-badge&logo=duolingo&logoColor=white" alt="Inglés B1" />
   <img src="https://komarev.com/ghpvc/?username=MGalvezLanders&label=Visitas&color=58a6ff&style=for-the-badge" alt="Visitas" />
 </p>
 
